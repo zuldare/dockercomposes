@@ -1,0 +1,22 @@
+# A Docker Compose must always start with the version tag.
+
+version: '3.8'
+
+# You should know that Docker Compose works with services.
+# 1 service = 1 container.
+# For example, a service, a server, a client, a database...
+# We use the keyword 'services' to start to create services.
+services:services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
